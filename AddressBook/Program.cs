@@ -14,17 +14,26 @@ namespace AddressBook
             while (choice)
             {
                 Console.WriteLine("What to you want to do?\n");
-                Console.WriteLine("1. Create a Contact\n2. Edit a Contact\n3. Exit");
+                Console.WriteLine("1. Create a Contact\n2. Edit a Contact\n3. Delete a Contact\n4. Exit");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
                     case 1:
-                        add.Create();
+                        Console.WriteLine("How many contact you want to create?\n");
+                        int num = Convert.ToInt32(Console.ReadLine());
+                        while (num > 0)
+                        {
+                            add.Create();
+                            num--;
+                        }
                         add.Display();
                         break;
                     case 2:
                         add.Edit();
                         add.Display();
+                        break;
+                    case 3:
+                        add.Delete();
                         break;
                     default:
                         choice = false;
