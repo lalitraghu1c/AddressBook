@@ -1,37 +1,34 @@
 ﻿using System;
+using System.Runtime.ExceptionServices;
+using System.Security.Cryptography.X509Certificates;
+
 namespace AddressBook
 {
-    public class program
+    public class Program
     {
         public static void Main(string[] args)
         {
-            bool condition = true;
-            while (condition)
+            Console.WriteLine("Welcome to Address Program Problem Statements\n");
+            bool choice = true;
+            AddressBookMain add = new AddressBookMain();
+            while (choice)
             {
-                AddressBookMain create = new AddressBookMain();
-                Console.WriteLine("Welcome to Address Book Problem Statement\n");
-                Console.WriteLine("Enter your Choice");
-                Console.WriteLine("1. Create a new Contact \n2. Edit a Contact \n3. Delete a Contact \n4. Exit \n");
-                int choice = Convert.ToInt32(Console.ReadLine());
-                switch (choice)
+                Console.WriteLine("What to you want to do?\n");
+                Console.WriteLine("1. Create a Contact\n2. Edit a Contact\n3. Exit");
+                int option = Convert.ToInt32(Console.ReadLine());
+                switch (option)
                 {
                     case 1:
-                        Console.WriteLine("\nEnter your details :-\n");
-                        create.Create();
+                        add.Create();
+                        add.Display();
                         break;
                     case 2:
-                        Console.WriteLine("\nEnter your details :-\n");
-                        create.Edit("Lalit");
-                        break;
-                    case 3:
-                        Console.WriteLine("\nEnter your details :-\n");
-                        
-                        Console.WriteLine("\nEnter name whose detail you want to delete :-\n");
-                        create.Delete("Lalit");
+                        add.Edit();
+                        add.Display();
                         break;
                     default:
+                        choice = false;
                         Console.WriteLine("Try Again");
-                        condition = false;
                         break;
                 }
             }
