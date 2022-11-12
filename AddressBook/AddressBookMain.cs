@@ -10,8 +10,9 @@ namespace AddressBook
 {
     public class AddressBookMain
     {
-        Contact contact = new Contact();
+        
         public List<Contact> address = new List<Contact>();
+        public Dictionary<string, List<Contact>> addressBook = new Dictionary<string, List<Contact>>();
         public void Display()
         {
             foreach (var contact in address)
@@ -23,6 +24,7 @@ namespace AddressBook
         }
         public void Create()
         {
+            Contact contact = new Contact();
             Console.WriteLine("Enter your First Name");
             contact.FirstName = Console.ReadLine();
             Console.WriteLine("Enter your Last Name");
@@ -40,7 +42,6 @@ namespace AddressBook
             Console.WriteLine("Enter your Email Id");
             contact.Email = Console.ReadLine();
             address.Add(contact);
-            Display();
         }
         public void Edit()
         {
@@ -48,8 +49,6 @@ namespace AddressBook
             string name = Console.ReadLine();
             foreach (var contact in address)
             {
-                if (address.Contains(contact))
-                {
                     if (contact.FirstName.Equals(name))
                     {
                         Console.WriteLine("What do you want to edit :-");
@@ -60,54 +59,68 @@ namespace AddressBook
                             case 1:
                                 Console.WriteLine("Enter the updated Address");
                                 contact.Address = Console.ReadLine();
-                                Display();
+                                
                                 break;
                             case 2:
                                 Console.WriteLine("Enter the updated City");
                                 contact.City = Console.ReadLine();
-                                Display();
+                                
                                 break;
                             case 3:
                                 Console.WriteLine("Enter the updated State");
                                 contact.State = Console.ReadLine();
-                                Display();
                                 break;
                             case 4:
                                 Console.WriteLine("Enter the updated Zip Code");
                                 contact.Zip = Convert.ToInt64(Console.ReadLine());
-                                Display();
+                                
                                 break;
                             case 5:
                                 Console.WriteLine("Enter the updated Phone Number");
                                 contact.PhoneNumber = Convert.ToInt64(Console.ReadLine());
-                                Display();
+                                
                                 break;
                             case 6:
                                 Console.WriteLine("Enter the updated Email Id");
                                 contact.Email = Console.ReadLine();
-                                Display();
+                                
                                 break;
                             default:
                                 Console.WriteLine("Try Again Later");
                                 break;
                         }
                     }
-                }
             }
         }
         public void Delete()
         {
             Console.WriteLine("\nEnter Name whos detail your want to Delete");
             string name = Console.ReadLine();
-            foreach (var contact in address)
+            
+            foreach (var contact in address.ToList())
             {
-                if (address.Contains(contact))
+               if (contact.FirstName.Equals(name))
+               {
+                   address.Remove(contact);
+               }
+               Console.WriteLine("Contact Deleted Successfully");
+            }
+        }
+        public void CreateDictionaryContact()
+        {
+            Console.WriteLine("Enter name to add AddressBook");
+            string name = Console.ReadLine();
+            addressBook.Add(name , address);
+            address = new List<Contact>();
+        }
+        public void DisplayDictionary()
+        {
+            foreach (var data in addressBook)
+            {
+                Console.WriteLine(data.Key);
+                foreach (var contact in data.Value)
                 {
-                    if (contact.FirstName.Equals(name))
-                    {
-                        address.Remove(contact);
-                    }
-                    Console.WriteLine("Contact Deleted Successfully");
+                    Console.WriteLine(contact.FirstName + "\t" + contact.LastName);
                 }
             }
         }
