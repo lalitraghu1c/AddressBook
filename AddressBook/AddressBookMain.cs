@@ -125,55 +125,5 @@ namespace AddressBook
                 }
             }
         }
-        public void CheckDuplicateName(List<Contact> addressBook, Contact contact)
-        {
-            if (addressBook.Exists(e => e.FirstName == contact.FirstName && e.LastName == contact.LastName))
-            {
-                Console.WriteLine("Contact already exists");
-            }
-            else
-            {
-                Console.WriteLine("Contact is not  exits");
-                addressBook.Add(contact);
-                Display();
-            }
-
-        }
-        public void SameCityAndState(List<Contact> addressBook, string Method)
-        {
-            if (Method.Equals("City"))
-            {
-                Console.WriteLine("Enter the name of city");
-                string cityName = Console.ReadLine();
-                foreach (var data in addressBook.OrderBy(e => e.City == cityName))
-                {
-                    Console.WriteLine(data.FirstName);
-                }
-            }
-            else if (Method.Equals("State"))
-            {
-                Console.WriteLine("Enter the name of state");
-                string stateName = Console.ReadLine();
-                foreach (var data in addressBook.OrderBy(e => e.State == stateName))
-                {
-                    Console.WriteLine(data.FirstName);
-                }
-            }
-            else
-            {
-                Console.WriteLine("No such City or State Found");
-            }
-        }
-        public void LambdaExpression()
-        {
-            Console.WriteLine("Enter the serach location City/State");
-            string method = Console.ReadLine();
-            SameCityAndState();
-        }
-
-        private void SameCityAndState()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
