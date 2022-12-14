@@ -16,12 +16,18 @@ namespace AddressBook
             while (choice)
             {
                 Console.WriteLine("What to you want to do?\n");
-                Console.WriteLine("1. Create a Contact\n2. Edit a Contact\n3. Delete a Contact\n4. Create a Contact Dictionary\n5. Display Dictionary\n6. Exit");
+                Console.WriteLine("1. Create a Contact\n2. Edit a Contact\n3. Delete a Contact\n4. Create a Contact Dictionary\n5. Display Dictionary\n6. Search name by City or State\n7. Exit");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
                     case 1:
-                        add.Create();
+                        Console.WriteLine("How many contact you want to create?\n");
+                        int num = Convert.ToInt32(Console.ReadLine());
+                        while (num > 0)
+                        {
+                            add.Create();
+                            num--;
+                        }
                         break;
                     case 2:
                         add.Edit();
@@ -35,6 +41,9 @@ namespace AddressBook
                         break;
                     case 5:
                         add.DisplayDictionary();
+                        break;
+                    case 6:
+                        add.LambdaExpression();
                         break;
                     default:
                         Console.WriteLine("Try Again");
