@@ -28,6 +28,7 @@ namespace AddressBook
                             add.Create();
                             num--;
                         }
+                        add.Display();
                         break;
                     case 2:
                         add.Edit();
