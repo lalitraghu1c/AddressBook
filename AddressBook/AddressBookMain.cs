@@ -136,5 +136,13 @@ namespace AddressBook
             }
             address.Add(contact);
         }
+        public void SearchPersonInCityOrState()
+        {
+            Console.Write("Enter the city or state to search person : ");
+            string serachCityOrState = Console.ReadLine();
+            foreach (var data in addressBook)
+                foreach (var personFind in data.Value.FindAll(x => x.City.Equals(serachCityOrState) || x.State.Equals(serachCityOrState)))
+                    Console.WriteLine(personFind.FirstName + " " + personFind.LastName);
+        }
     }
 }
