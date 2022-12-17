@@ -142,7 +142,7 @@ namespace AddressBook
             string serachCityOrState = Console.ReadLine();
             foreach (var data in addressBook)
                 foreach (var personFind in data.Value.FindAll(x => x.City.Equals(serachCityOrState) || x.State.Equals(serachCityOrState)))
-                    Console.WriteLine(personFind.FirstName + " " + personFind.LastName);
+                    Console.WriteLine(personFind.FirstName + " " + personFind.LastName); //UC-9
         }
     }
 }
