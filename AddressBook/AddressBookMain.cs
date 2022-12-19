@@ -144,5 +144,14 @@ namespace AddressBook
                 foreach (var personFind in data.Value.FindAll(x => x.City.Equals(serachCityOrState) || x.State.Equals(serachCityOrState)))
                     Console.WriteLine(personFind.FirstName + " " + personFind.LastName); //UC-9
         }
+        public void SearchTotalPersonCityOrStateInMultipleContactBookInDictonary(string search)
+        {
+            int totalPersonInCityOrState = 0;
+            foreach (var dictData in addressBook)
+            {
+                foreach (var dictListValue in dictData.Value.FindAll(x => x.City == search || x.State == search)) totalPersonInCityOrState++;
+            }
+            Console.WriteLine("Total person in City or State is : " + totalPersonInCityOrState);
+        }
     }
 }
